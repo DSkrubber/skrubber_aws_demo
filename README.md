@@ -8,7 +8,7 @@ This is a demo project to interact with different AWS services.
 
 2) You also need to create IAM user with programmatic access to EC2, S3, SNS, SQS, RDS, DynamoDB, Lambda and ElastiCache.
 
-3) Also create and preconfigure EC2 instance and redis ElastiCache cluster.
+3) Also create and preconfigure EC2 instance, RDS database and redis ElastiCache cluster.
 
 ### Installation
 
@@ -20,11 +20,15 @@ This is a demo project to interact with different AWS services.
 
 `poetry install`
 
+3) Add `.env` file with all requested variables to repo root.
+
 ### Run application
 
 1) To run web application from repository root use command:
 
-`sudo python3 -m uvicorn --host '0.0.0.0' --port 80 app.main:app`
+`poetry run uvicorn --host '0.0.0.0' --port 8000 app.main:app`
+
+*Note: make sure to allow access to port 8000 in 'Inbound rules' of your EC2 instance.*
 
 2) Since application runs you can interact with resources via SWAGGER:
 
